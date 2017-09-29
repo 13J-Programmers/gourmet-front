@@ -23,6 +23,6 @@ export class OrdersService {
   }
 
   private genUrl(url : string) : string {
-    return `http://${environment.api.host}:${environment.api.port}/${url}`;
+    return `http://${environment.api.host}:${environment.api.port}/api/${url}`;
   }
 }
