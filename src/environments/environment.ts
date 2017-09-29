@@ -9,4 +9,7 @@ export const environment = {
     host: 'localhost',
     port: 3000,
   },
+  group: {
+    id: 1,
+  },
 };
