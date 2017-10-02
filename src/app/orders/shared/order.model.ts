@@ -14,16 +14,25 @@ export class OrderDetailsAttribute {
 
 }
 
+export class OrderDetail {
+
+  constructor (
+    public id: number,
+    public quantity: number,
+    public amount: number,
+    public product_name: string
+  ) { }
+
+}
+
 export class Order {
 
   constructor (
-    public orderDetailsAttributes: OrderDetailsAttribute[]
+    public id: number,
+    public date: string,
+    public purchased_at: string || null,
+    public delivered_at: string || null,
+    public order_details: OrderDetail[]
   ) { }
-
-  public toObject() : any {
-    return {
-      order_details_attributes: this.orderDetailsAttributes.map((order) => order.toObject())
-    }
-  }
 
 }

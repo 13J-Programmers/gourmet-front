@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 
 import { OrdersService } from './shared/orders.service';
+import { DeliverComponent } from './deliver/deliver.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { OrdersService } from './shared/orders.service';
     OrdersComponent,
     RegisterComponent,
     PurchaseComponent,
+    DeliverComponent,
   ],
   providers: [
     OrdersService,
