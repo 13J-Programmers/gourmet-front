@@ -4,8 +4,4 @@ export class Group {
     public name: string,
   ) { }
 
-  public static buildFromApiResponse(obj: any) : Group {
-    return new Group(obj.id, obj.name);
-  }
-
 }

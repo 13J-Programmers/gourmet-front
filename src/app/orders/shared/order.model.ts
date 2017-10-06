@@ -5,11 +5,11 @@ export class OrderDetailsAttribute {
     public quantity: number
   ) { }
 
-  public toObject() : any {
+  public makeRequestBody() : any {
     return {
       product_id: this.productId,
-      quantity: this.quantity
-    }
+      quantity: this.quantity,
+    };
   }
 
 }
@@ -30,8 +30,8 @@ export class Order {
   constructor (
     public id: number,
     public date: string,
-    public purchased_at: string || null,
-    public delivered_at: string || null,
+    public purchased_at: string | null,
+    public delivered_at: string | null,
     public order_details: OrderDetail[]
   ) { }
 
