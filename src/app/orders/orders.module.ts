@@ -11,6 +11,8 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { OrdersService } from './shared/orders.service';
 import { DeliverComponent } from './deliver/deliver.component';
 
+import { BgImgDirective } from 'shared/bg-img.directive';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { DeliverComponent } from './deliver/deliver.component';
     RegisterComponent,
     PurchaseComponent,
     DeliverComponent,
+    BgImgDirective,
   ],
   providers: [
     OrdersService,

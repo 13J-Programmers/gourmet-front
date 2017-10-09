@@ -1,5 +1,15 @@
-<p>
-  orders works!
-  <a routerLink="/orders/register">To Register</a>
-  <a routerLink="/orders/purchase">To Purchase</a>
-</p>
+<div class="orders">
+  <div class="orders-top">
+    <h1 class="orders-top-name">5J じゃがバタ</h1>
+  </div>
+  <div class="orders-item-container">
+
+    <div class="orders-item" *ngFor="let item of ordersItems">
+      <a [routerLink]="item.link" class="orders-item-link">
+        <div class="orders-item-name">{{ item.name }}</div>
+      </a>
+    </div>
+
+  </div>
+
+</div>
