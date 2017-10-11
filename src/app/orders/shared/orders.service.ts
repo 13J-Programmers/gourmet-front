@@ -41,7 +41,7 @@ export class OrdersService {
   }
 
   purchaseOrder (id: number) : Observable<Order> {
-    const requestUrl = this.makeUrl(`gruops/${environment.group.id}/purchase/${id}/commit`);
+    const requestUrl = this.makeUrl(`groups/${environment.group.id}/purchase/${id}/commit`);
     return this.http.post<Order>(requestUrl, {});
   }
 
