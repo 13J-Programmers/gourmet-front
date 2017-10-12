@@ -1,0 +1,79 @@
+@import '../../../styles/colors'
+
+$product_item_width = 250px
+$border_width = 4px
+
+.register-item-wrapper
+  position relative
+  width $product_item_width
+  height ($product_item_width * 1.6)
+
+.register-item
+  border $border_width solid $color_white
+  border-radius 50%
+  height $product_item_width
+  position absolute
+  top 0
+  left 0
+  text-align center
+  width @height
+  transition border-color .3s
+  &.is-release
+    transition all .3s
+  &.is-sale
+    &:before
+      background url(../../../../assets/images/sale.png) center center / contain no-repeat
+      bottom 0
+      content ''
+      height 50%
+      position absolute
+      right -16px
+      width 70%
+      z-index 10
+.product-qty
+  position absolute
+  top 50%
+  left 50%
+  transform translate(-50%)
+  border-radius 50%
+  border 2px solid $color_white
+  background $color_secondary
+  font-size 50px
+  font-weight bold
+  height 100px
+  width @height
+  line-height (@height - 4px)
+  color $color_white
+  z-index 12
+
+.product-container
+  height 100%
+  width 100%
+  border-radius 50%
+  padding 4px
+  position relative
+  &:before
+    background rgba(0, 0, 0, 0.1)
+    border-radius 50%
+    content ''
+    height 100%
+    left 0
+    position absolute
+    top 0
+    width 100%
+    z-index 1
+    transition .3s
+
+.product-name
+  color $color_white
+  font-size 22px
+  font-weight 900
+  margin-top 56px
+  position relative
+  z-index 5
+
+.disable
+  border-color rgba($color_white, 50%)
+  .product-container
+    &:before
+      background rgba($color_black, 0.5)

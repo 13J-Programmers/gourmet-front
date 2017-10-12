@@ -1,0 +1,16 @@
+<div class="register-item-wrapper">
+  <div class="register-item"
+    *ngIf="product"
+    [class.disable]="productCount === 0"
+    [class.is-release]="isRelease"
+    [class.is-sale]="isSale"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd($event)"
+    [ngStyle]="productItemStyles">
+    <div class="product-container" appBgImg [src]="assetsPath(product.image_class)">
+      <div class="product-name">{{ product.name }}</div>
+      <div class="product-qty" *ngIf="productCount > 0">{{productCount}}</div>
+    </div>
+  </div>
+</div>
