@@ -1,23 +1,26 @@
 @import '../../../styles/colors'
+@import '../../../styles/variables'
 
 $product_item_width = 250px
 $border_width = 4px
 
+$product_item_width_m = 120px
+
 .register-item-wrapper
+  height ($product_item_width * 1.5)
   position relative
   width $product_item_width
-  height ($product_item_width * 1.6)
 
 .register-item
   border $border_width solid $color_white
   border-radius 50%
   height $product_item_width
-  position absolute
-  top 0
   left 0
+  position absolute
   text-align center
-  width @height
+  top 0
   transition border-color .3s
+  width @height
   &.is-release
     transition all .3s
   &.is-sale
@@ -30,28 +33,29 @@ $border_width = 4px
       right -16px
       width 70%
       z-index 10
+
 .product-qty
-  position absolute
-  top 50%
-  left 50%
-  transform translate(-50%)
-  border-radius 50%
-  border 2px solid $color_white
   background $color_secondary
+  border 2px solid $color_white
+  border-radius 50%
+  color $color_white
   font-size 50px
   font-weight bold
   height 100px
-  width @height
+  left 50%
   line-height (@height - 4px)
-  color $color_white
+  position absolute
+  top 50%
+  transform translate(-50%)
+  width @height
   z-index 12
 
 .product-container
-  height 100%
-  width 100%
   border-radius 50%
+  height 100%
   padding 4px
   position relative
+  width 100%
   &:before
     background rgba(0, 0, 0, 0.1)
     border-radius 50%
@@ -60,9 +64,9 @@ $border_width = 4px
     left 0
     position absolute
     top 0
+    transition .3s
     width 100%
     z-index 1
-    transition .3s
 
 .product-name
   color $color_white
@@ -77,3 +81,19 @@ $border_width = 4px
   .product-container
     &:before
       background rgba($color_black, 0.5)
+
+@media screen and (max-width $mobile_width)
+  .register-item-wrapper
+    height ($product_item_width_m * 1.5)
+    width $product_item_width_m
+  .register-item
+    height $product_item_width_m
+    width @height
+  .product-qty
+    font-size 24px
+    height 40px
+    width @height
+    line-height (@height - 4px)
+  .product-name
+    font-size 18px
+    margin-top 16px

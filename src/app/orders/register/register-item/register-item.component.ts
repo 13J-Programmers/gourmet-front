@@ -35,7 +35,8 @@ export class RegisterItemComponent implements OnInit {
     return path;
   }
 
-  public productItemStyles = { 'top.px': 100 };
+  private defaultTop = 80
+  public productItemStyles = { 'top.px': this.defaultTop };
   private startY: number = 0;
   private isRelease: Boolean = false;
   onTouchStart($event) {
@@ -43,21 +44,19 @@ export class RegisterItemComponent implements OnInit {
     this.isRelease = false;
   }
   onTouchMove($event) {
-    const top = 100 + $event.changedTouches[0].pageY - this.startY;
+    const top = this.defaultTop + $event.changedTouches[0].pageY - this.startY;
     this.productItemStyles = { 'top.px': top };
   }
   onTouchEnd($event) {
     const diff = $event.changedTouches[0].pageY - this.startY;
     if (diff > 50) {
       this.purchaseProduct.emit(this.product);
-      console.log("PURCHASE");
     }
     if (diff < -50) {
-      console.log("CANCEL");
       this.cancelProduct.emit(this.product);
     }
     this.isRelease = true;
-    this.productItemStyles = { 'top.px': 100 };
+    this.productItemStyles = { 'top.px': this.defaultTop };
   }
 
 }

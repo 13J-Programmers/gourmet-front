@@ -14,9 +14,9 @@
   flex-wrap wrap
   justify-content space-around
   margin 0 auto
+  max-width $tablet_width
   min-width 0
   padding 16px
-  width $tablet_width
 
 .register-submit
   border-top 1px solid $color_gray
@@ -26,13 +26,13 @@
   width 100%
 .register-price
   color $color_white
-  font-size 20px
+  font-size 28px
   padding 4px 8px
   text-align center
 .register-submit-btn
   background $color_primary
   border-radius 8px
-  box-shadow 0 2px 4px rgba($color_primary, 0.1)
+  box-shadow 0 4px 8px rgba($color_primary, 0.3)
   color $color_black
   font-size 24px
   font-weight bold
@@ -45,6 +45,6 @@
   width 80%
   &.disabled
     background shade($color_primary, 40%)
-
-
-
+    box-shadow 0 2px 4px rgba($color_primary, 0.1)
+  @media screen and (max-width $mobile_width)
+    margin-top 16px
