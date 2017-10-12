@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[appBgImg]'
@@ -9,8 +9,8 @@ export class BgImgDirective {
 
   @Input() src: string;
 
-  ngOnChanges (changes: any) {
-    if (changes.path.currentValue) {
+  ngOnChanges (changes: SimpleChanges) {
+    if (changes.src.currentValue) {
       this.el.nativeElement.style.background = `url(${this.src}) center center / cover no-repeat`;
     }
   }
