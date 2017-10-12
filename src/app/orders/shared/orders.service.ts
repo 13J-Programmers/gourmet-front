@@ -34,7 +34,7 @@ export class OrdersService {
     const requestUrl = this.makeUrl(`groups/${environment.group.id}/register_orders`);
     const body = {
       order: {
-        orderDetailsAttributes: orderDetails.map ((orderItem) => orderItem.makeRequestBody)
+        order_details_attributes: orderDetails.map ((orderItem) => orderItem.makeRequestBody())
       }
     };
     return this.http.post<Order>(requestUrl, body);
