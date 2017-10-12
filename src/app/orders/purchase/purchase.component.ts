@@ -10,11 +10,14 @@ import { Order } from '../shared/order.model';
 })
 export class PurchaseComponent implements OnInit {
 
-  constructor(private ordersService: OrdersService) { }
+  private startX = 0;
+  private isRelease = false;
 
   public beforePurchaseOrders: Order[];
   public currentOrder: Order | null;
   public currentOrderStyles: {};
+
+  constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.fetchBeforePurchaseOrders();
@@ -38,15 +41,12 @@ export class PurchaseComponent implements OnInit {
 
   calcPrice(order: Order): number {
     return order.order_details.map(orderItem => {
-      return orderItem.amount
+      return orderItem.amount;
     }).reduce((prev, current) => {
       return prev + current;
     }, 0);
   }
 
-  private touchX: number = 0;
-  private startX: number = 0;
-  private isRelease: Boolean = false;
   onTouchStart(event) {
     this.startX = event.changedTouches[0].pageX;
     this.isRelease = false;
@@ -59,10 +59,8 @@ export class PurchaseComponent implements OnInit {
     this.isRelease = true;
   }
   onTouchMove(event) {
-    const left = event.changedTouches[0].pageX - this.startX
-    this.currentOrderStyles = {
-      'left.px': left,
-    };
+    const left = event.changedTouches[0].pageX - this.startX;
+    this.currentOrderStyles = { 'left.px': left };
   }
 
 }

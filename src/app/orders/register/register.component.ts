@@ -18,15 +18,19 @@ export class RegisterComponent implements OnInit {
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
-    this.fetchProducts()
+    this.fetchProducts();
   }
   fetchProducts() {
     this.ordersService.fetchProducts()
       .subscribe(res => {
         this.products = res;
         this.products.sort((a, b) => {
-          if (a.id < b.id) return -1;
-          if (a.id > b.id) return 1;
+          if (a.id < b.id) {
+            return -1;
+          }
+          if (a.id > b.id) {
+            return 1;
+          }
           return 0;
         });
       });
@@ -69,7 +73,7 @@ export class RegisterComponent implements OnInit {
   calcPrice() {
     const price = this.currentOrder.map(c => {
       const product = this.products.find(p => p.id === c.productId);
-      return c.quantity * product.price
+      return c.quantity * product.price;
     }).reduce((a, b) => a + b, 0);
     return price;
   }
