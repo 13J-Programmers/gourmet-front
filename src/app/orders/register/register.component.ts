@@ -58,19 +58,20 @@ export class RegisterComponent implements OnInit {
     }
   }
   registerOrder() {
-    this.ordersService.registerOrder(this.currentOrder)
-      .subscribe(res => {
-        this.currentOrder = [];
-        this.fetchProducts();
-      });
+    if (this.currentOrder.length !== 0) {
+      this.ordersService.registerOrder(this.currentOrder)
+        .subscribe(res => {
+          this.currentOrder = [];
+          this.fetchProducts();
+        });
+    }
   }
-
-  abc() {
-    console.log(this.currentOrder);
-  }
-
-  validateOrder(): Boolean {
-    return false;
+  calcPrice() {
+    const price = this.currentOrder.map(c => {
+      const product = this.products.find(p => p.id === c.productId);
+      return c.quantity * product.price
+    }).reduce((a, b) => a + b, 0);
+    return price;
   }
 
 }
