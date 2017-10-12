@@ -1,0 +1,99 @@
+@import '../../../styles/colors'
+@import '../../../styles/variables'
+
+$product_item_width = 250px
+$border_width = 4px
+
+$product_item_width_m = 120px
+
+.register-item-wrapper
+  height ($product_item_width * 1.5)
+  position relative
+  width $product_item_width
+
+.register-item
+  border $border_width solid $color_white
+  border-radius 50%
+  height $product_item_width
+  left 0
+  position absolute
+  text-align center
+  top 0
+  transition border-color .3s
+  width @height
+  &.is-release
+    transition all .3s
+  &.is-sale
+    &:before
+      background url(../../../../assets/images/sale.png) center center / contain no-repeat
+      bottom 0
+      content ''
+      height 50%
+      position absolute
+      right -16px
+      width 70%
+      z-index 10
+
+.product-qty
+  background $color_secondary
+  border 2px solid $color_white
+  border-radius 50%
+  color $color_white
+  font-size 50px
+  font-weight bold
+  height 100px
+  left 50%
+  line-height (@height - 4px)
+  position absolute
+  top 50%
+  transform translate(-50%)
+  width @height
+  z-index 12
+
+.product-container
+  border-radius 50%
+  height 100%
+  padding 4px
+  position relative
+  width 100%
+  &:before
+    background rgba(0, 0, 0, 0.1)
+    border-radius 50%
+    content ''
+    height 100%
+    left 0
+    position absolute
+    top 0
+    transition .3s
+    width 100%
+    z-index 1
+
+.product-name
+  color $color_white
+  font-size 22px
+  font-weight 900
+  margin-top 56px
+  position relative
+  z-index 5
+
+.disable
+  border-color rgba($color_white, 50%)
+  .product-container
+    &:before
+      background rgba($color_black, 0.5)
+
+@media screen and (max-width $mobile_width)
+  .register-item-wrapper
+    height ($product_item_width_m * 1.5)
+    width $product_item_width_m
+  .register-item
+    height $product_item_width_m
+    width @height
+  .product-qty
+    font-size 24px
+    height 40px
+    width @height
+    line-height (@height - 4px)
+  .product-name
+    font-size 18px
+    margin-top 16px

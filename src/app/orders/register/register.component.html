@@ -1,0 +1,16 @@
+<div class="register" *ngIf="products">
+  <div class="register-list">
+    <ng-container *ngFor="let product of products">
+      <app-register-item [product]="product"
+        *ngIf="!product.soldout"
+        [productCount]="getProductCount(product)"
+        (purchaseProduct)="addProduct(product)"
+        (cancelProduct)="decrementProduct(product)"></app-register-item>
+    </ng-container>
+  </div>
+  <div class="register-submit">
+    <div class="register-price">合計{{calcPrice()}}円</div>
+    <div class="register-submit-btn" (click)="registerOrder()" [class.disabled]="currentOrder.length === 0">注文</div>
+  </div>
+</div>
+

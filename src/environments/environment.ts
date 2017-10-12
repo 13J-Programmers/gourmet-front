@@ -7,6 +7,9 @@ export const environment = {
   production: false,
   api: {
     host: 'localhost',
-    post: 3000,
+    port: 3000,
+  },
+  group: {
+    id: 1,
   },
 };

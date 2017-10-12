@@ -1,0 +1,46 @@
+<div class="purchase">
+  <div class="purchase-header">
+    <h1 class="purchase-header-name">会計</h1>
+    <div class="purchase-header-meta"></div>
+  </div>
+  <div class="purchase-container" *ngIf="beforePurchaseOrders">
+
+    <div class="current-order-wrapper">
+      <div class="current-order"
+        *ngIf="currentOrder"
+        [class.is-release]="isRelease"
+        (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)"
+        (touchend)="onTouchEnd($event)"
+        [ngStyle]="currentOrderStyles">
+        <div class="current-order-header">
+          <div class="current-order-id">＃{{currentOrder.id}}</div>
+          <div class="current-order-price">￥{{calcPrice(currentOrder)}}</div>
+        </div>
+        <div class="current-order-body">
+          <div class="current-order-item" *ngFor="let item of currentOrder.order_details">
+            <div class="order-item-name">{{item.product_name}}</div>
+            <div class="order-item-qty">{{item.quantity}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="purchase-order-queue">
+      <div class="next-order-item" *ngFor="let item of beforePurchaseOrders.slice(1, 5)">
+        <div class="next-order-header">
+          <div class="next-order-id">＃{{item.id}}</div>
+          <div class="next-order-price">￥{{calcPrice(item)}}</div>
+        </div>
+        <div class="next-order-body">
+          <div class="order-item" *ngFor="let orderItem of item.order_details">
+            <div class="order-item-name">{{orderItem.product_name}}</div>
+            <div class="order-item-qty">{{orderItem.quantity}}</div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

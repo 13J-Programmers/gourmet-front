@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/styles/colors'
+
+html
+  touch-action manipulation
+
+html, body
+  height 100%
+  width 100%
+
+body
+  -webkit-font-smoothing antialiased
+  -webkit-overflow-scrolling touch
+  -webkit-text-size-adjust 100%
+  background $color_background
+  color $color_text
+  font-family -apple-system, 'BlinkMacSystemFont', 'Helvetica Neue', 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', sans-serif
+  font-size 15px
+  line-height 1.4
+  position relative
+  word-wrap break-word
+
+pre
+  font-family inherit
+  white-space pre-wrap
+  word-wrap break-word
+
+h1
+h2
+h3
+h4
+h5
+h6
+  font-weight normal
+  margin 0
+
+a
+  color inherit
+  text-decoration none
+  vertical-align baseline
+
+img
+  vertical-align baseline
+
+ul
+  margin 0
+  padding 0
+
+li
+  list-style none
+
+input
+textarea
+  &:focus
+    outline none
+
+button
+input
+select
+textarea
+  border-style none
+
+button
+  appearance none
+  border none
+  outline none
+  user-select none

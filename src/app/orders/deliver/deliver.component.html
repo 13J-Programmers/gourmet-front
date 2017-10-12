@@ -1,0 +1,30 @@
+<div class="deliver" (keydown.enter)="onKeyDown($event)" tabindex="1">
+  <div class="deliver-container" *ngIf="beforeDeliverOrders">
+
+    <div class="current-order" *ngIf="currentOrder">
+      <div class="current-order-id">#{{currentOrder.id}}</div>
+      <div class="current-order-body">
+        <div class="current-order-item"
+        *ngFor="let item of currentOrder.order_details">
+          <div class="order-item-name">{{item.product_name}}</div>
+          <div class="order-item-qty">{{item.quantity}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-order-queue">
+      <div class="next-order-item"
+        *ngFor="let nextOrder of beforeDeliverOrders.slice(1, 5)">
+        <div class="next-order-id">#{{nextOrder.id}}</div>
+        <div class="next-order-body">
+          <div class="order-item"
+            *ngFor="let detail of nextOrder.order_details">
+            <div class="order-item-name">{{detail.product_name}}</div>
+            <div class="order-item-qty">{{detail.quantity}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
