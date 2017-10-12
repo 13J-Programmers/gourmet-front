@@ -38,7 +38,7 @@ export class PurchaseComponent implements OnInit {
 
   calcPrice(order: Order): number {
     return order.order_details.map(orderItem => {
-      return orderItem.amount * orderItem.quantity
+      return orderItem.amount
     }).reduce((prev, current) => {
       return prev + current;
     }, 0);
