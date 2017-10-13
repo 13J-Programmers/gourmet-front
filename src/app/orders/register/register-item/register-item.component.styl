@@ -2,37 +2,66 @@
 @import '../../../styles/variables'
 
 $product_item_width = 250px
-$border_width = 4px
+$border_width = 8px
 
 $product_item_width_m = 120px
 
 .register-item-wrapper
+  border 2px dashed $color_gray_shade2
+  border-radius 130px
   height ($product_item_width * 1.5)
   position relative
   width $product_item_width
+  &:before
+    background url(../../../../assets/images/icons/minus.svg) center center / contain no-repeat
+    content ''
+    height 15%
+    left 0
+    position absolute
+    top 0
+    width 100%
+    z-index -1
+  &:after
+    background url(../../../../assets/images/icons/plus.svg) center center / contain no-repeat
+    bottom 0
+    content ''
+    height 15%
+    left 0
+    position absolute
+    width 100%
+    z-index -1
 
 .register-item
-  border $border_width solid $color_white
   border-radius 50%
   height $product_item_width
-  left 0
+  left -1px
   position absolute
   text-align center
   top 0
-  transition border-color .3s
   width @height
+  &:before
+    border $border_width solid rgba($color_white, 90%)
+    border-radius 50%
+    content ''
+    height 100%
+    left 0
+    position absolute
+    top 0
+    transition .3s
+    width 100%
+    z-index 3
   &.is-release
     transition all .3s
   &.is-sale
-    &:before
+    &:after
       background url(../../../../assets/images/sale.png) center center / contain no-repeat
       bottom 0
       content ''
       height 50%
       position absolute
-      right -16px
+      right -4px
       width 70%
-      z-index 10
+      z-index 1
 
 .product-qty
   background $color_secondary
@@ -66,7 +95,7 @@ $product_item_width_m = 120px
     top 0
     transition .3s
     width 100%
-    z-index 1
+    z-index 4
 
 .product-name
   color $color_white
@@ -77,7 +106,8 @@ $product_item_width_m = 120px
   z-index 5
 
 .disable
-  border-color rgba($color_white, 50%)
+  &:before
+    border-color rgba($color_white, 50%)
   .product-container
     &:before
       background rgba($color_black, 0.5)
@@ -88,12 +118,15 @@ $product_item_width_m = 120px
     width $product_item_width_m
   .register-item
     height $product_item_width_m
+    top 0
     width @height
+    &:before
+      border-width 4px
   .product-qty
     font-size 24px
     height 40px
     width @height
     line-height (@height - 4px)
   .product-name
-    font-size 18px
-    margin-top 16px
+    font-size 16px
+    margin-top 20px

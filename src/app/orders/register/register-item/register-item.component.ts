@@ -16,11 +16,15 @@ import { Product } from '../../shared/product.model';
 export class RegisterItemComponent implements OnInit {
 
   @Input() product: Product;
-  @Input() productCount: number = 0;
+  @Input() productCount = 0;
   @Output() purchaseProduct: EventEmitter<any> = new EventEmitter();
   @Output() cancelProduct: EventEmitter<any> = new EventEmitter();
 
-  public isSale: Boolean = false;
+  private defaultTop = document.documentElement.clientWidth > 400 ? 60 : 30;
+  private startY = 0;
+  private isRelease = false;
+  private isSale = false;
+  public productItemStyles = { 'top.px': this.defaultTop };
 
   constructor() { }
 
@@ -35,10 +39,6 @@ export class RegisterItemComponent implements OnInit {
     return path;
   }
 
-  private defaultTop = 80
-  public productItemStyles = { 'top.px': this.defaultTop };
-  private startY: number = 0;
-  private isRelease: Boolean = false;
   onTouchStart($event) {
     this.startY = $event.changedTouches[0].pageY;
     this.isRelease = false;

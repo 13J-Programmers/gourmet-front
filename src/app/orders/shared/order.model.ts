@@ -5,7 +5,7 @@ export class OrderDetailsAttribute {
     public quantity: number
   ) { }
 
-  public makeRequestBody() : any {
+  public makeRequestBody(): any {
     return {
       product_id: this.productId,
       quantity: this.quantity,

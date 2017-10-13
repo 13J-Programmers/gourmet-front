@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular
 @Directive({
   selector: '[appBgImg]'
 })
-export class BgImgDirective {
+export class BgImgDirective implements OnChanges {
 
   constructor(private el: ElementRef) { }
 
