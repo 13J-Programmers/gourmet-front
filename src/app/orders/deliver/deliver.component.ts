@@ -42,7 +42,8 @@ export class DeliverComponent implements OnInit {
           this.deliveredOrders.shift();
         }
         this.deliveredOrders.push(this.currentOrder);
-        this.fetchBeforeDeliverOrders();
+        this.beforeDeliverOrders = res;
+        this.currentOrder = this.beforeDeliverOrders[0];
       }, e => {
         this.orderResponse = null;
         this.orderStatus = 'error';

@@ -41,7 +41,9 @@ export class PurchaseComponent implements OnInit {
         this.orderResponse = this.currentOrder;
         this.orderStatus = 'success';
         this.isModalOpen = true;
-        this.fetchBeforePurchaseOrders();
+        this.beforePurchaseOrders = res;
+        this.currentOrder = this.beforePurchaseOrders.length > 0 ?
+        this.beforePurchaseOrders[0] : null;
       }, e => {
         this.orderResponse = null;
         this.orderStatus = 'error';

@@ -40,14 +40,14 @@ export class OrdersService {
     return this.http.post<Order>(requestUrl, body);
   }
 
-  purchaseOrder (id: number): Observable<Order> {
+  purchaseOrder (id: number): Observable<Order[]> {
     const requestUrl = this.makeUrl(`groups/${environment.group.id}/purchase/${id}/commit`);
-    return this.http.post<Order>(requestUrl, {});
+    return this.http.post<Order[]>(requestUrl, {});
   }
 
-  deliverOrder (id: number): Observable<Order> {
+  deliverOrder (id: number): Observable<Order[]> {
     const requestUrl = this.makeUrl(`groups/${environment.group.id}/deliver/${id}/commit`);
-    return this.http.post<Order>(requestUrl, {});
+    return this.http.post<Order[]>(requestUrl, {});
   }
 
   private makeUrl(url: string): string {
