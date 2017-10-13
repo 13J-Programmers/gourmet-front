@@ -12,6 +12,9 @@ export class PurchaseComponent implements OnInit {
 
   private startX = 0;
   private isRelease = false;
+  private isModalOpen = false;
+  private orderStatus = '';
+  private orderResponse: Order;
 
   public beforePurchaseOrders: Order[];
   public currentOrder: Order | null;
@@ -35,7 +38,14 @@ export class PurchaseComponent implements OnInit {
   purchaseOrder (orderId: number) {
     this.ordersService.purchaseOrder(orderId)
       .subscribe(res => {
+        this.orderResponse = this.currentOrder;
+        this.orderStatus = 'success';
+        this.isModalOpen = true;
         this.fetchBeforePurchaseOrders();
+      }, e => {
+        this.orderResponse = null;
+        this.orderStatus = 'error';
+        this.isModalOpen = true;
       });
   }
 
@@ -62,6 +72,18 @@ export class PurchaseComponent implements OnInit {
     const left = event.changedTouches[0].pageX - this.startX;
     this.currentOrderStyles = { 'left.px': left };
     event.preventDefault();
+  }
+
+  assetsPath(name) {
+    if (name !== '') {
+      return `../../../assets/images/icons/${name}.svg`;
+    } else {
+      return '';
+    }
+  }
+  closeModal() {
+    this.isModalOpen = false;
+    this.orderStatus = '';
   }
 
 }

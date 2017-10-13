@@ -12,6 +12,10 @@ export class DeliverComponent implements OnInit {
 
   constructor(private ordersService: OrdersService) { }
 
+  private isModalOpen = false;
+  private orderStatus = '';
+  private orderResponse: Order;
+
   public beforeDeliverOrders: Order[];
   public currentOrder: Order;
   public deliveredOrders: Order[] = [];
@@ -30,15 +34,34 @@ export class DeliverComponent implements OnInit {
   deliverOrder(id: number) {
     this.ordersService.deliverOrder(id)
       .subscribe(res => {
+        this.orderResponse = this.currentOrder;
+        this.orderStatus = 'success';
+        this.isModalOpen = true;
+
         if (this.deliveredOrders.length > 1) {
           this.deliveredOrders.shift();
         }
         this.deliveredOrders.push(this.currentOrder);
         this.fetchBeforeDeliverOrders();
+      }, e => {
+        this.orderResponse = null;
+        this.orderStatus = 'error';
+        this.isModalOpen = true;
       });
   }
   onKeyDown(event) {
     this.deliverOrder(this.currentOrder.id);
+  }
+  assetsPath(name) {
+    if (name !== '') {
+      return `../../../assets/images/icons/${name}.svg`;
+    } else {
+      return '';
+    }
+  }
+  closeModal() {
+    this.isModalOpen = false;
+    this.orderStatus = '';
   }
 
 }
