@@ -1,7 +1,7 @@
 <div class="purchase">
   <div class="purchase-container" *ngIf="beforePurchaseOrders">
 
-    <div class="current-order-wrapper">
+    <div class="current-order-wrapper" *ngIf="currentOrder">
       <div class="current-order"
         *ngIf="currentOrder"
         [class.is-release]="isRelease"
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="purchase-order-queue">
+    <div class="purchase-order-queue" *ngIf="beforePurchaseOrders.length !== 0">
       <div class="next-order-item" *ngFor="let item of beforePurchaseOrders.slice(1, 5)">
         <div class="next-order-header">
           <div class="next-order-id">＃{{item.id}}</div>
@@ -37,6 +37,10 @@
       </div>
 
 
+    </div>
+
+    <div class="purchase-none" *ngIf="beforePurchaseOrders.length === 0">
+      <div class="purchase-none-order">会計タスクなし</div>
     </div>
   </div>
 </div>
