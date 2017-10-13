@@ -61,6 +61,7 @@ export class PurchaseComponent implements OnInit {
   onTouchMove(event) {
     const left = event.changedTouches[0].pageX - this.startX;
     this.currentOrderStyles = { 'left.px': left };
+    event.preventDefault();
   }
 
 }
