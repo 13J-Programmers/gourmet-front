@@ -1,4 +1,4 @@
-<div class="deliver" (keydown.enter)="onKeyDown($event)" tabindex="1">
+<div class="deliver" (keydown)="onKeyDown($event)" >
   <div class="deliver-container" *ngIf="beforeDeliverOrders">
 
     <div class="current-order" *ngIf="currentOrder">
