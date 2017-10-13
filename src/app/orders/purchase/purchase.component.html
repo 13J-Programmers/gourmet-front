@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<app-status-modal [isOpen]="isModalOpen" (onClose)="closeModal()">
+<app-status-modal [isOpen]="isModalOpen" (onClose)="closeModal()" [time]="1000">
   <div class="register-status">
     <div class="status-icon" appBgImg [src]="assetsPath(orderStatus)"></div>
     <div class="status-order-id" *ngIf="orderResponse">#{{orderResponse.id}}</div>

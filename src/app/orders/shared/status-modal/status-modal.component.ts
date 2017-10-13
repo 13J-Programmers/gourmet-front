@@ -20,6 +20,7 @@ import { animations } from './animation';
 export class StatusModalComponent implements OnInit, OnChanges {
 
   @Input() isOpen: Boolean;
+  @Input() time: number;
   @Output() onClose: EventEmitter<any> = new EventEmitter();
   private innerStatus = 'close';
 
@@ -30,12 +31,13 @@ export class StatusModalComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.isOpen.currentValue) {
       this.innerStatus = 'open';
+      const openTime = this.time ? this.time : 2000;
       setTimeout(() => {
         this.innerStatus = 'close';
-      }, 2000);
+      }, openTime);
       setTimeout(() => {
         this.onClose.emit(null);
-      }, 2100);
+      }, openTime + 100);
     }
   }
 }
