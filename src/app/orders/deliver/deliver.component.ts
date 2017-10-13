@@ -54,7 +54,9 @@ export class DeliverComponent implements OnInit {
       });
   }
   onKeyDown(event) {
-    this.deliverOrder(this.currentOrder.id);
+    if (this.currentOrder) {
+      this.deliverOrder(this.currentOrder.id);
+    }
   }
   assetsPath(name) {
     if (name !== '') {
