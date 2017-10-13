@@ -12,9 +12,9 @@ export class DeliverComponent implements OnInit {
 
   constructor(private ordersService: OrdersService) { }
 
-  private isModalOpen = false;
-  private orderStatus = '';
-  private orderResponse: Order;
+  public isModalOpen = false;
+  public orderStatus = '';
+  public orderResponse: Order;
 
   public beforeDeliverOrders: Order[];
   public currentOrder: Order;
