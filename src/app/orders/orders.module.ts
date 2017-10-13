@@ -13,6 +13,7 @@ import { DeliverComponent } from './deliver/deliver.component';
 import { RegisterItemComponent } from './register/register-item/register-item.component';
 
 import { BgImgDirective } from 'shared/bg-img.directive';
+import { StatusModalComponent } from './shared/status-modal/status-modal.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { BgImgDirective } from 'shared/bg-img.directive';
     DeliverComponent,
     RegisterItemComponent,
     BgImgDirective,
+    StatusModalComponent,
   ],
   providers: [
     OrdersService,
