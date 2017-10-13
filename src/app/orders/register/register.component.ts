@@ -22,6 +22,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.fetchProducts();
+    setInterval(() => {
+      this.fetchProducts();
+    }, 5000);
   }
   fetchProducts() {
     this.ordersService.fetchProducts()

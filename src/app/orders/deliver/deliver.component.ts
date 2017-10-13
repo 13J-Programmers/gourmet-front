@@ -22,6 +22,9 @@ export class DeliverComponent implements OnInit {
 
   ngOnInit() {
     this.fetchBeforeDeliverOrders();
+    setInterval(() => {
+      this.fetchBeforeDeliverOrders();
+    }, 5000);
   }
 
   fetchBeforeDeliverOrders() {

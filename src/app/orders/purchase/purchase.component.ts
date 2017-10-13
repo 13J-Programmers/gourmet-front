@@ -24,6 +24,9 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit() {
     this.fetchBeforePurchaseOrders();
+    setInterval(() => {
+      this.fetchBeforePurchaseOrders();
+    }, 5000);
   }
 
   fetchBeforePurchaseOrders() {
