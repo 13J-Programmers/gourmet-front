@@ -8,6 +8,7 @@ export const environment = {
   api: {
     host: 'localhost',
     port: 3000,
+    ssl: false,
   },
   group: {
     id: 1,
