@@ -20,7 +20,7 @@ export class RegisterItemComponent implements OnInit {
   @Output() purchaseProduct: EventEmitter<any> = new EventEmitter();
   @Output() cancelProduct: EventEmitter<any> = new EventEmitter();
 
-  private defaultTop = 80;
+  private defaultTop = document.documentElement.clientWidth > 400 ? 60 : 30;
   private startY = 0;
   private isRelease = false;
   private isSale = false;
