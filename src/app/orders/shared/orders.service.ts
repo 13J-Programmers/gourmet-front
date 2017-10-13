@@ -51,6 +51,7 @@ export class OrdersService {
   }
 
   private makeUrl(url: string): string {
-    return `http://${environment.api.host}:${environment.api.port}/api/${url}`;
+    const scheme = environment.api.ssl ? 'https' : 'http';
+    return `${scheme}://${environment.api.host}:${environment.api.port}/api/${url}`;
   }
 }
