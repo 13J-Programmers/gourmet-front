@@ -12,9 +12,9 @@ export class PurchaseComponent implements OnInit {
 
   private startX = 0;
   private isRelease = false;
-  private isModalOpen = false;
-  private orderStatus = '';
-  private orderResponse: Order;
+  public isModalOpen = false;
+  public orderStatus = '';
+  public orderResponse: Order;
 
   public beforePurchaseOrders: Order[];
   public currentOrder: Order | null;
