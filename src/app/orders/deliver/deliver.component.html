@@ -14,7 +14,7 @@
 
     <div class="next-order-queue">
       <div class="next-order-item"
-        *ngFor="let nextOrder of beforeDeliverOrders.slice(1, 5)">
+        *ngFor="let nextOrder of beforeDeliverOrders.slice(1, 7)">
         <div class="next-order-id">#{{nextOrder.id}}</div>
         <div class="next-order-body">
           <div class="order-item"
@@ -26,5 +26,17 @@
       </div>
     </div>
 
+    <div class="deliver-none" *ngIf="beforeDeliverOrders.length === 0">
+      <div class="current-order">
+        調理タスクなし
+      </div>
+    </div>
   </div>
 </div>
+
+<app-status-modal [isOpen]="isModalOpen" (onClose)="closeModal()" [time]="1000">
+  <div class="register-status">
+    <div class="status-icon" appBgImg [src]="assetsPath(orderStatus)"></div>
+    <div class="status-order-id" *ngIf="orderResponse">#{{orderResponse.id}}</div>
+  </div>
+</app-status-modal>

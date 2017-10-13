@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { Product } from '../shared/product.model';
-import { OrderDetailsAttribute } from '../shared/order.model';
+import { Order, OrderDetailsAttribute } from '../shared/order.model';
 import { OrdersService } from '../shared/orders.service';
 
 @Component({
@@ -14,11 +14,17 @@ export class RegisterComponent implements OnInit {
 
   public products: Product[];
   public currentOrder: OrderDetailsAttribute[] = [];
+  public isModalOpen = false;
+  public orderStatus = '';
+  public orderResponse: Order;
 
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.fetchProducts();
+    setInterval(() => {
+      this.fetchProducts();
+    }, 5000);
   }
   fetchProducts() {
     this.ordersService.fetchProducts()
@@ -65,8 +71,15 @@ export class RegisterComponent implements OnInit {
     if (this.currentOrder.length !== 0) {
       this.ordersService.registerOrder(this.currentOrder)
         .subscribe(res => {
+          this.orderResponse = res;
+          this.orderStatus = 'success';
+          this.isModalOpen = true;
           this.currentOrder = [];
           this.fetchProducts();
+        }, err => {
+          this.orderResponse = null;
+          this.orderStatus = 'error';
+          this.isModalOpen = true;
         });
     }
   }
@@ -76,6 +89,17 @@ export class RegisterComponent implements OnInit {
       return c.quantity * product.price;
     }).reduce((a, b) => a + b, 0);
     return price;
+  }
+  assetsPath(name) {
+    if (name !== '') {
+      return `../../../assets/images/icons/${name}.svg`;
+    } else {
+      return '';
+    }
+  }
+  closeModal() {
+    this.isModalOpen = false;
+    this.orderStatus = '';
   }
 
 }

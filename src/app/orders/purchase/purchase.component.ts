@@ -12,6 +12,9 @@ export class PurchaseComponent implements OnInit {
 
   private startX = 0;
   private isRelease = false;
+  private isModalOpen = false;
+  private orderStatus = '';
+  private orderResponse: Order;
 
   public beforePurchaseOrders: Order[];
   public currentOrder: Order | null;
@@ -21,6 +24,9 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit() {
     this.fetchBeforePurchaseOrders();
+    setInterval(() => {
+      this.fetchBeforePurchaseOrders();
+    }, 5000);
   }
 
   fetchBeforePurchaseOrders() {
@@ -35,7 +41,16 @@ export class PurchaseComponent implements OnInit {
   purchaseOrder (orderId: number) {
     this.ordersService.purchaseOrder(orderId)
       .subscribe(res => {
-        this.fetchBeforePurchaseOrders();
+        this.orderResponse = this.currentOrder;
+        this.orderStatus = 'success';
+        this.isModalOpen = true;
+        this.beforePurchaseOrders = res;
+        this.currentOrder = this.beforePurchaseOrders.length > 0 ?
+        this.beforePurchaseOrders[0] : null;
+      }, e => {
+        this.orderResponse = null;
+        this.orderStatus = 'error';
+        this.isModalOpen = true;
       });
   }
 
@@ -61,6 +76,19 @@ export class PurchaseComponent implements OnInit {
   onTouchMove(event) {
     const left = event.changedTouches[0].pageX - this.startX;
     this.currentOrderStyles = { 'left.px': left };
+    event.preventDefault();
+  }
+
+  assetsPath(name) {
+    if (name !== '') {
+      return `../../../assets/images/icons/${name}.svg`;
+    } else {
+      return '';
+    }
+  }
+  closeModal() {
+    this.isModalOpen = false;
+    this.orderStatus = '';
   }
 
 }

@@ -1,0 +1,7 @@
+<div class="status-modal" *ngIf="isOpen">
+  <div class="status-modal-wrapper">
+    <div class="status-modal-container" [@modalState]="innerStatus">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

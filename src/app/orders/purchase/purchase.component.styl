@@ -3,9 +3,9 @@
 
 .purchase
   height 100%
+  overflow hidden
   padding 16px
   width 100%
-  overflow hidden
 
 .purchase-header
   color $color_white
@@ -49,24 +49,26 @@
 .current-order-body
   display flex
   flex-wrap wrap
-  padding 8px 12px
+  justify-content space-between
+  padding 4px 12px
 
 $current-order-item-radius = 4px
 .current-order-item
   border 2px solid $color_gray_tint2
   border-radius $current-order-item-radius
   color $color_white
-  font-size 18px
-  & + &
-    margin-left 16px
+  font-size 0
+  margin 4px
 .order-item-name
   background $color_gray_shade1
   border-radius $current-order-item-radius 0 0 $current-order-item-radius
   display inline-block
+  font-size 18px
   padding 4px 8px
 .order-item-qty
   border-radius 0 $current-order-item-radius $current-order-item-radius 0
   display inline-block
+  font-size 18px
   padding 4px 8px
 
 
@@ -95,9 +97,56 @@ $current-order-item-radius = 4px
   padding 8px
 
 .next-order-body
+  align-items flex-start
   display flex
   flex-wrap wrap
-  padding 8px
+  justify-content space-around
   min-height 100px
+  padding 8px
   .order-item
+    border 2px solid $color_gray_shade1
+    border-radius 4px
+    font-size 0
     margin 4px
+  .order-item-name
+  .order-item-qty
+    font-size 18px
+
+
+.purchase-none
+  align-content center
+  background $color_gray_shade3
+  border 4px solid $color_gray_tint1
+  border-radius $common_radius
+  color $color_gray_tint1
+  display flex
+  font-size 32px
+  font-weight bold
+  height 150px
+  padding 16px
+
+.purchase-none-order
+  line-height 110px
+
+
+.register-status
+  background $color_gray
+  border-radius 16px
+  display flex
+  flex-direction column
+  height 50%
+  justify-content center
+  margin 0 auto
+  width 80%
+
+.status-icon
+  height 300px
+  margin 0 auto
+  width @height
+
+.status-order-id
+  color $color_gray_tint3
+  font-size 80px
+  font-weight bold
+  margin-top 16px
+  text-align center

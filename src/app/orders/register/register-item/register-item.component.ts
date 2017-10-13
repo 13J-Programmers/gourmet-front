@@ -46,6 +46,7 @@ export class RegisterItemComponent implements OnInit {
   onTouchMove($event) {
     const top = this.defaultTop + $event.changedTouches[0].pageY - this.startY;
     this.productItemStyles = { 'top.px': top };
+    $event.preventDefault();
   }
   onTouchEnd($event) {
     const diff = $event.changedTouches[0].pageY - this.startY;
