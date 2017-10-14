@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 
 import { OrdersService } from '../shared/orders.service';
 import { Order } from '../shared/order.model';
@@ -8,7 +8,7 @@ import { Order } from '../shared/order.model';
   templateUrl: './deliver.component.html',
   styleUrls: ['./deliver.component.styl']
 })
-export class DeliverComponent implements OnInit {
+export class DeliverComponent implements OnInit, OnDestroy {
 
   constructor(private ordersService: OrdersService) { }
 
@@ -25,6 +25,8 @@ export class DeliverComponent implements OnInit {
     setInterval(() => {
       this.fetchBeforeDeliverOrders();
     }, 5000);
+  }
+  ngOnDestroy() {
   }
 
   fetchBeforeDeliverOrders() {
@@ -53,8 +55,10 @@ export class DeliverComponent implements OnInit {
         this.isModalOpen = true;
       });
   }
+
+  @HostListener('document:keydown', ['$event'])
   onKeyDown(event) {
-    if (this.currentOrder) {
+    if (this.currentOrder && event.keyCode === 13) {
       this.deliverOrder(this.currentOrder.id);
     }
   }
